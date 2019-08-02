@@ -1,0 +1,15 @@
+*:not(.code-string) > .code-builtin {
+  color: purple
+}
+
+.code-string {
+  color: orange
+}
+
+.code-grammar {
+  color: red
+}
+
+.code-var {
+  color: green
+}

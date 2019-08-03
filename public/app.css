@@ -1,15 +1,34 @@
 *:not(.code-string) > .code-builtin {
-  color: purple
+  color: plum
 }
 
 .code-string {
-  color: orange
+  color: gold
 }
 
 .code-grammar {
-  color: red
+  color: tomato
 }
 
 .code-var {
-  color: green
+  color: darkseagreen
+}
+
+body {
+  background-color: #263238;
+  color: #ffffff;
+}
+
+input {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  background-color: inherit;
+  color: inherit;
+  outline: none;
+  transition: background-color 0.3s;
+}
+
+input:focus {
+  background-color: #4f5b62
 }

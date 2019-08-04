@@ -91,13 +91,18 @@
       if (classAttrs.length > 0) {
         let attr = classAttrs[0]
         exampleLines.push({
-          cmd: "printf '" + objName + ' ' + attr.name + " value is: '; " + objName + '_' + attr.name,
+          cmd: (colorWrap('printf', 'builtin') + ' ' + singleQ +
+            colorWrap(objName + ' ' + attr.name + ' value is: ', 'string') +
+            singleQ + colorWrap(';', 'grammar') + ' ' + objName + '_' +
+            attr.name),
           output: objName + ' ' + attr.name + ' value is: ' + attr.value + '\n'
         })
       }
     }
+    let shPrompt = colorWrap('sh$', 'prompt')
     exampleLines.forEach( line => {
-      example += 'sh$ ' + line.cmd + '\n' + line.output
+      example += shPrompt + ' ' + line.cmd + '\n' +
+        colorWrap(line.output, 'example-output')
     })
   }
 </script>

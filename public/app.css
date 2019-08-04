@@ -20,7 +20,7 @@
 
 body {
   background-color: #263238;
-  color: #ffffff;
+  color: white;
 }
 
 input {
@@ -35,4 +35,12 @@ input {
 
 input:focus {
   background-color: #4f5b62
+}
+
+.code-prompt {
+  color: darkseagreen
+}
+
+.code-example-output {
+  color: lightgrey
 }

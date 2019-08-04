@@ -53,7 +53,7 @@
   }
 
   $: {
-    let splittedClass = classDef.split(" ")
+    let splittedClass = classDef.trim().split(" ")
     className = splittedClass[0]
     let attrs = []
     let methods = []
@@ -107,35 +107,39 @@
   }
 </script>
 
-<form>
- <span>class </span>
- <input bind:value={classDef}/>
-</form>
+<main>
+  <section>
+    <form>
+     <span class='input-header'>class </span>
+     <input id='class-input' bind:value={classDef}/>
+    </form>
 
-<form>
- {className}
+    <form>
+      <span class='input-header'>{className}</span>
 
- {#if className}
-   <input bind:value={objName} placeholder='{className} object name'/>
- {/if}
+     {#if className}
+       <input bind:value={objName} placeholder='{className} object name'/>
+     {/if}
 
- {#each classAttrs as attr}
-   <input bind:value={attr.value} placeholder={attr.name}/>
- {/each}
-</form>
+     {#each classAttrs as attr}
+       <input bind:value={attr.value} placeholder={attr.name}/>
+     {/each}
+    </form>
+  </section>
 
-<div>
-  <h3>Generated code</h3>
+  <section>
+    <h3>Generated code</h3>
 
-  {#each classAttrs as classAttr}
-    <pre><code>{@html classAttr.content}</code></pre>
-  {/each}
+    {#each classAttrs as classAttr}
+      <pre><code>{@html classAttr.content}</code></pre>
+    {/each}
 
-  {#each classMethods as classMethod}
-    <pre><code>{@html classMethod.content}</code></pre>
-  {/each}
-</div>
-<div style='padding-bottom: 20px'>
-  <h3>Example</h3>
-  <pre><code>{@html example}</code></pre>
-</div>
+    {#each classMethods as classMethod}
+      <pre><code>{@html classMethod.content}</code></pre>
+    {/each}
+  </section>
+  <section>
+    <h3>Example</h3>
+    <pre><code>{@html example}</code></pre>
+  </section>
+</main>

@@ -23,7 +23,13 @@ body {
   color: white;
 }
 
+
+main {
+  padding: 5% 10%;
+}
+
 input {
+  margin: 10px;
   border-top: none;
   border-left: none;
   border-right: none;
@@ -31,6 +37,20 @@ input {
   color: inherit;
   outline: none;
   transition: background-color 0.3s;
+}
+
+input:not(#class-input) {
+  text-align: center;
+}
+
+#class-input {
+  width: 100%;
+  max-width: 400px;
+  word-spacing: 0.5em;
+}
+
+.input-header {
+  font-weight: bold
 }
 
 input:focus {

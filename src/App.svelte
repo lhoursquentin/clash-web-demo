@@ -6,6 +6,7 @@
   let className = ''
   let objName = ''
   let example = ''
+  let buttonText = 'Fill it for me'
 
   function colorWrap(text, codeType) {
     return '<span class="code-' + codeType + '">' + text + '</span>'
@@ -52,7 +53,28 @@
       colorWrap('}', 'assign')
   }
 
+  function autofill() {
+    if (classDef) {
+      classDef = ''
+      return
+    }
+
+    classDef = 'Car speed brand _start'
+    className = 'Car'
+    objName = 'truck'
+    classAttrs= [
+      {name: 'speed', value: '150'},
+      {name: 'brand', value: 'Toyota'},
+    ]
+  }
+
   $: {
+    if (classDef) {
+      buttonText = 'Clear it for me'
+    } else {
+      buttonText = 'Fill it for me'
+      objName = ''
+    }
     let splittedClass = classDef.trim().split(" ")
     className = splittedClass[0]
     let attrs = []
@@ -108,6 +130,7 @@
 </script>
 
 <main>
+  <button on:click={autofill}>{buttonText}</button>
   <section>
     <form>
      <span class='input-header'>class </span>
@@ -127,19 +150,21 @@
     </form>
   </section>
 
-  <section>
-    <h3>Generated code</h3>
+  <div class='flexbox'>
+    <section>
+      <h3>Generated code</h3>
 
-    {#each classAttrs as classAttr}
-      <pre><code>{@html classAttr.content}</code></pre>
-    {/each}
+      {#each classAttrs as classAttr}
+        <pre><code>{@html classAttr.content}</code></pre>
+      {/each}
 
-    {#each classMethods as classMethod}
-      <pre><code>{@html classMethod.content}</code></pre>
-    {/each}
-  </section>
-  <section>
-    <h3>Example</h3>
-    <pre><code>{@html example}</code></pre>
-  </section>
+      {#each classMethods as classMethod}
+        <pre><code>{@html classMethod.content}</code></pre>
+      {/each}
+    </section>
+    <section>
+      <h3>Example</h3>
+      <pre><code>{@html example}</code></pre>
+    </section>
+  </div>
 </main>

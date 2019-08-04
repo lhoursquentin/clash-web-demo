@@ -1,5 +1,82 @@
-*:not(.code-string) > .code-builtin {
-  color: plum
+body {
+  background-color: #263238;
+  color: white;
+}
+
+main {
+  padding: 5% 10%;
+}
+
+section {
+  margin: 10px 20px;
+  padding: 10px 20px;
+}
+
+pre {
+  padding: 10px;
+  background-color: #000a12;
+  border-radius: 2px;
+}
+
+input {
+  margin: 10px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-color: white;
+  background-color: inherit;
+  color: inherit;
+  outline: none;
+  transition: background-color 0.3s;
+}
+
+input:not(#class-input) {
+  text-align: center;
+}
+
+input:focus {
+  background-color: #4f5b62
+}
+
+button {
+  background-color: inherit;
+  color: white;
+  border: 1px solid white;
+  transition: background-color 0.5s;
+}
+
+button:hover {
+  background-color: #4f5b62;
+}
+
+button:active {
+  background-color: white;
+}
+
+button:focus {
+  border: 1px solid white;
+}
+
+#class-input {
+  width: 100%;
+  max-width: 400px;
+  word-spacing: 0.5em;
+}
+
+.flexbox {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.flexbox > section {
+  border-left: 1px solid white;
+  padding-left: 20px;
+}
+
+.input-header {
+  font-weight: bold
 }
 
 .code-string {
@@ -14,49 +91,6 @@
   color: darkseagreen
 }
 
-*:not(.code-string) > .code-assign {
-  color: lightskyblue
-}
-
-body {
-  background-color: #263238;
-  color: white;
-}
-
-
-main {
-  padding: 5% 10%;
-}
-
-input {
-  margin: 10px;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  background-color: inherit;
-  color: inherit;
-  outline: none;
-  transition: background-color 0.3s;
-}
-
-input:not(#class-input) {
-  text-align: center;
-}
-
-#class-input {
-  width: 100%;
-  max-width: 400px;
-  word-spacing: 0.5em;
-}
-
-.input-header {
-  font-weight: bold
-}
-
-input:focus {
-  background-color: #4f5b62
-}
-
 .code-prompt {
   color: darkseagreen
 }
@@ -64,3 +98,12 @@ input:focus {
 .code-example-output {
   color: lightgrey
 }
+
+*:not(.code-string) > .code-builtin {
+  color: plum
+}
+
+*:not(.code-string) > .code-assign {
+  color: lightskyblue
+}
+

@@ -6,21 +6,23 @@
   let className = ''
   let objName = ''
   let example = ''
+
   function colorWrap(text, codeType) {
     return '<span class="code-' + codeType + '">' + text + '</span>'
   }
+
   let singleQ = colorWrap("'", 'grammar')
   let doubleQ = colorWrap('"', 'grammar')
+
   function getSetCode(objName, arg, value) {
     function getterGen( v, indentLvl ) {
       let indent = ' '.repeat(indentLvl)
-      return objName + '_' + arg + '() {\n  ' + indent +
-        colorWrap('printf', 'builtin') + ' %s ' + colorWrap(v, 'string') +
-        '\n' + indent + '}'
+      return colorWrap(objName + '_' + arg + '() {', 'assign') + '\n  ' +
+        indent + colorWrap('printf', 'builtin') + ' %s ' +
+        colorWrap(v, 'string') + '\n' + indent + colorWrap('}', 'assign')
     }
-    let getter = getterGen( "'" + value + "'", 0 )
-    let setter = objName + '_' + arg +
-      "_is() {\n  " +
+    let getter = getterGen(singleQ + value + singleQ, 0)
+    let setter = colorWrap(objName + '_' + arg + "_is() {\n  ", 'assign') +
       colorWrap('eval', 'builtin') +
       ' ' + singleQ +
       colorWrap(
@@ -31,17 +33,23 @@
           2),
         'string'
       ) +
-      singleQ + '\n}'
+      singleQ + '\n' + colorWrap('}', 'assign')
     return getter + '\n' + setter
   }
 
   function methodCode(className, objName, methodName, attrs) {
-    let attrDefs = '  <span class="code-builtin">local</span> self=' + objName + '\n'
+    let attrDefs = '  ' + colorWrap('local', 'builtin') +
+      ' ' + colorWrap('self', 'assign') + '=' + objName + '\n'
     attrs.forEach(attr => {
-      attrDefs += '  <span class="code-builtin">local</span> ' + attr.name +
-        '=$(' + objName + '_' + attr.name + ')\n'
+      attrDefs += '  ' + colorWrap('local', 'builtin') + ' ' +
+        colorWrap(attr.name, 'assign') +
+        '=' + colorWrap('$(', 'var') + objName + '_' + attr.name +
+        colorWrap(')', 'var') + '\n'
     })
-    return objName + methodName + '() {\n' + attrDefs + '  ' + className + methodName + ' "$@"\n}'
+    return colorWrap(objName + methodName + '() {', 'assign') +
+      ' \n' + attrDefs + '  ' + className +
+      methodName + ' ' + doubleQ + colorWrap('$@', 'var') + doubleQ + '\n' +
+      colorWrap('}', 'assign')
   }
 
   $: {

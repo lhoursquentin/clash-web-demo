@@ -23,8 +23,9 @@
         colorWrap(v, 'string') + '\n' + indent + colorWrap('}', 'assign')
     }
     let getter = getterGen(singleQ + value + singleQ, 0)
-    let setter = colorWrap(objName + '_' + arg + "_is() {\n  ", 'assign') +
-      colorWrap('eval', 'builtin') +
+    let setter = colorWrap(objName + '_' + arg + '_is() {', 'assign') + '\n  ' +
+      colorWrap('# Recreate the getter above with a new value', 'comment') +
+      '\n  ' + colorWrap('eval', 'builtin') +
       ' ' + singleQ +
       colorWrap(
         getterGen(
@@ -35,12 +36,14 @@
         'string'
       ) +
       singleQ + '\n' + colorWrap('}', 'assign')
-    return getter + '\n' + setter
+    return getter + '\n\n' + setter
   }
 
   function methodCode(className, objName, methodName, attrs) {
-    let attrDefs = '  ' + colorWrap('local', 'builtin') +
-      ' ' + colorWrap('self', 'assign') + '=' + objName + '\n'
+    let attrDefs = '  ' +
+      colorWrap('# Populate all object attributes for the actual function call',
+        'comment') + '\n  ' + colorWrap('local', 'builtin') + ' ' +
+      colorWrap('self', 'assign') + '=' + objName + '\n'
     attrs.forEach(attr => {
       attrDefs += '  ' + colorWrap('local', 'builtin') + ' ' +
         colorWrap(attr.name, 'assign') +
@@ -49,8 +52,13 @@
     })
     return colorWrap(objName + methodName + '() {', 'assign') +
       ' \n' + attrDefs + '  ' + className +
-      methodName + ' ' + doubleQ + colorWrap('$@', 'var') + doubleQ + '\n' +
-      colorWrap('}', 'assign')
+      methodName + ' ' + doubleQ + colorWrap('$@', 'var') + doubleQ +
+      colorWrap(
+        ' # ' + className + methodName +
+          ' function must be created by the user',
+        'comment'
+      ) +
+      '\n' + colorWrap('}', 'assign')
   }
 
   function autofill() {
@@ -102,15 +110,37 @@
     let exampleLines = []
     example = ''
     exampleLines.push({
-      cmd: 'class ' + classDef,
+      cmd: '. ./clash' + colorWrap(' # source the clash library', 'comment'),
+      output: '',
+    },
+    {
+      cmd: 'class ' + classDef +
+        colorWrap(' # Create the ' + className + ' class', 'comment'),
       output: ''
     })
     if (objName) {
       exampleLines.push({
-        cmd: className + ' ' + objName + classAttrs.reduce( (acc, val) => acc + ' ' + val.value, ''),
+        cmd: className + ' ' + objName +
+          classAttrs.reduce( (acc, val) => acc + ' ' + val.value, '') +
+          colorWrap(' # Create a new instance of ' + className + ' called ' +
+            objName, 'comment'),
         output: ''
       })
-      if (classAttrs.length > 0) {
+      if (methods.length) {
+        exampleLines.push({
+          cmd: colorWrap(className + methods[0].name + '() {', 'assign') + ' ' +
+            colorWrap('echo', 'builtin') + ' ' + doubleQ +
+            colorWrap('Calling ', 'string') + colorWrap('$self', 'var') +
+            colorWrap(' object method', 'string') + doubleQ +
+            colorWrap(';', 'grammar') + ' ' + colorWrap('}', 'assign'),
+          output: ''
+        },
+        {
+          cmd: objName + methods[0].name,
+          output: 'Calling ' + objName + ' object method\n'
+        })
+      }
+      if (classAttrs.length) {
         let attr = classAttrs[0]
         exampleLines.push({
           cmd: (colorWrap('printf', 'builtin') + ' ' + singleQ +
@@ -124,10 +154,17 @@
     let shPrompt = colorWrap('sh$', 'prompt')
     exampleLines.forEach( line => {
       example += shPrompt + ' ' + line.cmd + '\n' +
-        colorWrap(line.output, 'example-output')
+        colorWrap(line.output, 'example-output') + '\n'
     })
+    example = example.trim()
   }
 </script>
+
+<header>
+  <a id='repo-link' href='https://github.com/lhoursquentin/clash'>
+    &lt; Go to github repo
+  </a>
+</header>
 
 <main>
   <button on:click={autofill}>{buttonText}</button>

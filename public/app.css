@@ -63,6 +63,14 @@ button:focus {
   word-spacing: 0.5em;
 }
 
+a {
+  color: white
+}
+
+a:visited {
+  color: lightgrey
+}
+
 .flexbox {
   display: flex;
   flex-direction: row;
@@ -97,6 +105,10 @@ button:focus {
 
 .code-example-output {
   color: lightgrey
+}
+
+.code-comment {
+  color: grey
 }
 
 *:not(.code-string) > .code-builtin {

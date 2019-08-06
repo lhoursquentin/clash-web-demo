@@ -14,6 +14,7 @@
 
   let singleQ = colorWrap("'", 'grammar')
   let doubleQ = colorWrap('"', 'grammar')
+  let ps2 = colorWrap('> ', 'prompt')
 
   function getSetCode(objName, arg, value) {
     function getterGen( v, indentLvl ) {
@@ -24,7 +25,8 @@
     }
     let getter = getterGen(singleQ + value + singleQ, 0)
     let setter = colorWrap(objName + '_' + arg + '_is() {', 'assign') + '\n  ' +
-      colorWrap('# Recreate the getter above with a new value', 'comment') +
+      colorWrap('# Recreate the ' + objName + '_' + arg +
+        ' getter above with a new value', 'comment') +
       '\n  ' + colorWrap('eval', 'builtin') +
       ' ' + singleQ +
       colorWrap(
@@ -118,6 +120,18 @@
         colorWrap(' # Create the ' + className + ' class', 'comment'),
       output: ''
     })
+    if (methods.length) {
+      exampleLines.push({
+        cmd: colorWrap(className + methods[0].name + '() {', 'assign') + 
+          colorWrap(' # Implement the ' + methods[0].name.substring(1) +
+            ' method', 'comment') + '\n' +
+          ps2 + '    ' +  colorWrap('echo', 'builtin') + ' ' + doubleQ +
+          colorWrap('Calling ', 'string') + colorWrap('$self', 'var') +
+          colorWrap(' object method', 'string') + doubleQ + '\n' +
+          ps2 + '  ' + colorWrap('}', 'assign'),
+        output: ''
+      })
+    }
     if (objName) {
       exampleLines.push({
         cmd: className + ' ' + objName +
@@ -128,15 +142,10 @@
       })
       if (methods.length) {
         exampleLines.push({
-          cmd: colorWrap(className + methods[0].name + '() {', 'assign') + ' ' +
-            colorWrap('echo', 'builtin') + ' ' + doubleQ +
-            colorWrap('Calling ', 'string') + colorWrap('$self', 'var') +
-            colorWrap(' object method', 'string') + doubleQ +
-            colorWrap(';', 'grammar') + ' ' + colorWrap('}', 'assign'),
-          output: ''
-        },
-        {
-          cmd: objName + methods[0].name,
+          cmd: objName + methods[0].name +
+            colorWrap(' # Call the ' +
+              className + methods[0].name + ' with ' + objName +
+              ' attributes populated', 'comment'),
           output: 'Calling ' + objName + ' object method\n'
         })
       }

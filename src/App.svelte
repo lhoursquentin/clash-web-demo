@@ -224,6 +224,11 @@
           <a href='https://svelte.dev' target='_blank'>Svelte</a>) simulating
           how clash works
         </li>
+        <li>
+          Source code of this web app available
+          <a href='https://github.com/lhoursquentin/clash-web-demo'
+            target='_blank'>here</a>
+        </li>
       </ul>
     </section>
   </div>

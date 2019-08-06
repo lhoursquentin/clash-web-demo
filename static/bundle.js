@@ -420,7 +420,7 @@ var app = (function () {
     }
 
     function create_fragment(ctx) {
-    	var header, a0, t1, main, button, t2, t3, section0, form0, span0, t5, input, t6, form1, span1, t7, t8, t9, t10, div, section1, h30, t12, t13, t14, section2, h31, t16, pre, code, t17, section3, h32, t19, ul, li0, t21, li1, t22, a1, t24, dispose;
+    	var header, a0, t1, main, button, t2, t3, section0, form0, span0, t5, input, t6, form1, span1, t7, t8, t9, t10, div, section1, h30, t12, t13, t14, section2, h31, t16, pre, code, t17, section3, h32, t19, ul, li0, t21, li1, t22, a1, t24, t25, li2, t26, a2, dispose;
 
     	var if_block = (ctx.className) && create_if_block(ctx);
 
@@ -514,6 +514,11 @@ var app = (function () {
     			a1 = element("a");
     			a1.textContent = "Svelte";
     			t24 = text(") simulating\n          how clash works");
+    			t25 = space();
+    			li2 = element("li");
+    			t26 = text("Source code of this web app available\n          ");
+    			a2 = element("a");
+    			a2.textContent = "here";
     			attr(a0, "href", "https://github.com/lhoursquentin/clash");
     			add_location(a0, file, 172, 2, 5522);
     			add_location(header, file, 171, 0, 5511);
@@ -539,6 +544,10 @@ var app = (function () {
     			attr(a1, "target", "_blank");
     			add_location(a1, file, 223, 10, 6853);
     			add_location(li1, file, 221, 8, 6759);
+    			attr(a2, "href", "https://github.com/lhoursquentin/clash-web-demo");
+    			attr(a2, "target", "_blank");
+    			add_location(a2, file, 228, 10, 7032);
+    			add_location(li2, file, 226, 8, 6969);
     			add_location(ul, file, 216, 6, 6580);
     			attr(section3, "id", "notes");
     			add_location(section3, file, 214, 4, 6532);
@@ -618,6 +627,10 @@ var app = (function () {
     			append(li1, t22);
     			append(li1, a1);
     			append(li1, t24);
+    			append(ul, t25);
+    			append(ul, li2);
+    			append(li2, t26);
+    			append(li2, a2);
     		},
 
     		p: function update(changed, ctx) {

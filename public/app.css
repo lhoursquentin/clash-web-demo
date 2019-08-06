@@ -14,22 +14,22 @@ section {
 }
 
 pre {
-  padding: 10px;
   background-color: #000a12;
   border-radius: 2px;
+  padding: 10px;
 }
 
 input {
-  margin: 10px;
-  padding: 0.5em;
-  border-top: none;
+  background-color: inherit;
+  border-color: white;
   border-left: none;
   border-right: none;
+  border-top: none;
   border-width: 1px;
-  border-color: white;
-  background-color: inherit;
   color: inherit;
+  margin: 10px;
   outline: none;
+  padding: 0.5em;
   transition: background-color 0.3s;
 }
 
@@ -43,12 +43,12 @@ input:focus {
 
 button {
   background-color: inherit;
-  color: white;
-  border: 1px solid white;
-  transition: background-color 0.5s;
-  padding: 0.5em;
   border-radius: 2px;
+  border: 1px solid white;
+  color: white;
   outline: none;
+  padding: 0.5em;
+  transition: background-color 0.5s;
 }
 
 button:hover {
@@ -77,16 +77,16 @@ a:visited {
 }
 
 #class-input {
-  width: 100%;
   max-width: 400px;
+  width: 100%;
   word-spacing: 0.5em;
 }
 
 .flexbox {
+  align-items: flex-start;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  align-items: flex-start;
 }
 
 .flexbox > section {
@@ -129,4 +129,3 @@ a:visited {
 *:not(.code-string) > .code-assign {
   color: lightskyblue
 }
-

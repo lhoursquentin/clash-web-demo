@@ -286,7 +286,7 @@ var app = (function () {
     		c: function create() {
     			input = element("input");
     			attr(input, "placeholder", input_placeholder_value = "" + ctx.className + " object name");
-    			add_location(input, file, 189, 7, 5908);
+    			add_location(input, file, 189, 7, 5904);
     			dispose = listen(input, "input", ctx.input_input_handler_1);
     		},
 
@@ -326,7 +326,7 @@ var app = (function () {
     		c: function create() {
     			input = element("input");
     			attr(input, "placeholder", input_placeholder_value = ctx.attr.name);
-    			add_location(input, file, 193, 7, 6027);
+    			add_location(input, file, 193, 7, 6023);
     			dispose = listen(input, "input", input_input_handler_2);
     		},
 
@@ -363,8 +363,8 @@ var app = (function () {
     		c: function create() {
     			pre = element("pre");
     			code = element("code");
-    			add_location(code, file, 203, 13, 6243);
-    			add_location(pre, file, 203, 8, 6238);
+    			add_location(code, file, 203, 13, 6239);
+    			add_location(pre, file, 203, 8, 6234);
     		},
 
     		m: function mount(target, anchor) {
@@ -395,8 +395,8 @@ var app = (function () {
     		c: function create() {
     			pre = element("pre");
     			code = element("code");
-    			add_location(code, file, 207, 13, 6358);
-    			add_location(pre, file, 207, 8, 6353);
+    			add_location(code, file, 207, 13, 6354);
+    			add_location(pre, file, 207, 8, 6349);
     		},
 
     		m: function mount(target, anchor) {
@@ -515,36 +515,36 @@ var app = (function () {
     			a1.textContent = "Svelte";
     			t24 = text(") simulating\n          how clash works");
     			attr(a0, "href", "https://github.com/lhoursquentin/clash");
-    			add_location(a0, file, 172, 2, 5526);
-    			add_location(header, file, 171, 0, 5515);
-    			add_location(button, file, 178, 2, 5631);
+    			add_location(a0, file, 172, 2, 5522);
+    			add_location(header, file, 171, 0, 5511);
+    			add_location(button, file, 178, 2, 5627);
     			attr(span0, "class", "input-header");
-    			add_location(span0, file, 181, 5, 5709);
+    			add_location(span0, file, 181, 5, 5705);
     			attr(input, "id", "class-input");
-    			add_location(input, file, 182, 5, 5755);
-    			add_location(form0, file, 180, 4, 5697);
+    			add_location(input, file, 182, 5, 5751);
+    			add_location(form0, file, 180, 4, 5693);
     			attr(span1, "class", "input-header");
-    			add_location(span1, file, 186, 6, 5833);
-    			add_location(form1, file, 185, 4, 5820);
-    			add_location(section0, file, 179, 2, 5683);
-    			add_location(h30, file, 200, 6, 6167);
-    			add_location(section1, file, 199, 4, 6151);
-    			add_location(h31, file, 211, 6, 6454);
-    			add_location(code, file, 212, 11, 6482);
-    			add_location(pre, file, 212, 6, 6477);
-    			add_location(section2, file, 210, 4, 6438);
-    			add_location(h32, file, 215, 6, 6563);
-    			add_location(li0, file, 217, 8, 6597);
+    			add_location(span1, file, 186, 6, 5829);
+    			add_location(form1, file, 185, 4, 5816);
+    			add_location(section0, file, 179, 2, 5679);
+    			add_location(h30, file, 200, 6, 6163);
+    			add_location(section1, file, 199, 4, 6147);
+    			add_location(h31, file, 211, 6, 6450);
+    			add_location(code, file, 212, 11, 6478);
+    			add_location(pre, file, 212, 6, 6473);
+    			add_location(section2, file, 210, 4, 6434);
+    			add_location(h32, file, 215, 6, 6559);
+    			add_location(li0, file, 217, 8, 6593);
     			attr(a1, "href", "https://svelte.dev");
     			attr(a1, "target", "_blank");
-    			add_location(a1, file, 223, 10, 6857);
-    			add_location(li1, file, 221, 8, 6763);
-    			add_location(ul, file, 216, 6, 6584);
+    			add_location(a1, file, 223, 10, 6853);
+    			add_location(li1, file, 221, 8, 6759);
+    			add_location(ul, file, 216, 6, 6580);
     			attr(section3, "id", "notes");
-    			add_location(section3, file, 214, 4, 6536);
+    			add_location(section3, file, 214, 4, 6532);
     			attr(div, "class", "flexbox");
-    			add_location(div, file, 198, 2, 6125);
-    			add_location(main, file, 177, 0, 5622);
+    			add_location(div, file, 198, 2, 6121);
+    			add_location(main, file, 177, 0, 5618);
 
     			dispose = [
     				listen(button, "click", ctx.autofill),
@@ -895,7 +895,7 @@ var app = (function () {
               if (methods.length) {
                 exampleLines.push({
                   cmd: objName + methods[0].name +
-                    colorWrap(' # Call the ' +
+                    colorWrap(' # Call ' +
                       className + methods[0].name + ' with ' + objName +
                       ' attributes populated', 'comment'),
                   output: 'Calling ' + objName + ' object method\n'
@@ -950,3 +950,4 @@ var app = (function () {
     return app;
 
 }());
+//# sourceMappingURL=bundle.js.map

@@ -143,7 +143,7 @@
       if (methods.length) {
         exampleLines.push({
           cmd: objName + methods[0].name +
-            colorWrap(' # Call the ' +
+            colorWrap(' # Call ' +
               className + methods[0].name + ' with ' + objName +
               ' attributes populated', 'comment'),
           output: 'Calling ' + objName + ' object method\n'

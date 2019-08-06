@@ -65,7 +65,6 @@ button:focus {
 
 a {
   color: white;
-  text-decoration: none;
 }
 
 a:hover {
@@ -80,6 +79,15 @@ a:visited {
   max-width: 400px;
   width: 100%;
   word-spacing: 0.5em;
+}
+
+#notes {
+  max-width: 400px;
+}
+
+li {
+  margin: 1em 0;
+  font-size: 0.9em;
 }
 
 .flexbox {

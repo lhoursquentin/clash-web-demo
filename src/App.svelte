@@ -170,8 +170,8 @@
 </script>
 
 <header>
-  <a id='repo-link' href='https://github.com/lhoursquentin/clash'>
-    &lt; Go to github repo
+  <a href='https://github.com/lhoursquentin/clash'>
+    Go to clash github repo
   </a>
 </header>
 
@@ -211,6 +211,20 @@
     <section>
       <h3>Example</h3>
       <pre><code>{@html example}</code></pre>
+    </section>
+    <section id='notes'>
+      <h3>Notes</h3>
+      <ul>
+        <li>
+          The actual generated code is much longer, it has been simplified to
+          be readable and to show the basic concept of clash
+        </li>
+        <li>
+          This demo does not run a shell, it's all front-end JavaScript (using
+          <a href='https://svelte.dev' target='_blank'>Svelte</a>) simulating
+          how clash works
+        </li>
+      </ul>
     </section>
   </div>
 </main>

@@ -1,6 +1,7 @@
 body {
   background-color: #263238;
   color: white;
+  font-family: sans-serif;
 }
 
 main {
@@ -20,9 +21,11 @@ pre {
 
 input {
   margin: 10px;
+  padding: 0.5em;
   border-top: none;
   border-left: none;
   border-right: none;
+  border-width: 1px;
   border-color: white;
   background-color: inherit;
   color: inherit;
@@ -43,6 +46,9 @@ button {
   color: white;
   border: 1px solid white;
   transition: background-color 0.5s;
+  padding: 0.5em;
+  border-radius: 2px;
+  outline: none;
 }
 
 button:hover {
@@ -57,18 +63,23 @@ button:focus {
   border: 1px solid white;
 }
 
-#class-input {
-  width: 100%;
-  max-width: 400px;
-  word-spacing: 0.5em;
+a {
+  color: white;
+  text-decoration: none;
 }
 
-a {
-  color: white
+a:hover {
+  text-decoration: underline;
 }
 
 a:visited {
   color: lightgrey
+}
+
+#class-input {
+  width: 100%;
+  max-width: 400px;
+  word-spacing: 0.5em;
 }
 
 .flexbox {
